@@ -28,9 +28,17 @@ All requests require configuration which is just a map of information needed to 
 
 ```clojure
 @(influx/query local-conf "SHOW DATABASES")
+```
 
-;; Create a database
+An example REPL session
 
+```clojure
+(query docker-conf show-databases-query)
+;; #promise[{:status :pending, :val nil} 0xa50d47c]
+
+;; @(query docker-conf show-databases-query)
+;; {:status 200,
+;;  :body {:results [{:series [{:name "databases", :columns ["name"], :values [["_internal"]]}]}]}}
 ```
 
 ## Writing Data
@@ -38,7 +46,7 @@ All requests require configuration which is just a map of information needed to 
 If you want to write a single line of data to influx
 
 ```clojure
-
+(influx/write local-conf "mydb" "cpu_load_short,host=server02 value=0.67")
 ```
 
 Or a batch of data
@@ -49,7 +57,7 @@ Or a batch of data
     "cpu_load_short,host=server02,region=us-west value=0.55 1422568543702900257"
     "cpu_load_short,direction=in,host=server01,region=us-west value=2.0 1422568543702900257" ])
 
-
+(influx/write-batch local-conf "mydb" sample-data)
 
 ```
 
