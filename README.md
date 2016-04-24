@@ -3,7 +3,7 @@
 ![](https://raw.githubusercontent.com/owainlewis/influx/master/logo.png)
 
 An async client for Influx DB. If there's anything I've missed please get in touch.
-Internally this client uses http-kit for async requests. Use the @ operator to block requests. See http-kit for more info.
+Internally this client uses http-kit for async requests. Use the *@* operator to block requests. See http-kit for more info.
 
 InfluxDB has a really simple HTTP API an so this client tries to adhere to that simplicity as much as possible.
 
@@ -38,10 +38,10 @@ Running simple "raw" queries is straightforward.
 An example REPL session showing the difference between blocking and non blocking requests.
 
 ```clojure
-(query docker-conf show-databases-query)
+(query local-conf show-databases-query)
 ;; #promise[{:status :pending, :val nil} 0xa50d47c]
 
-@(query docker-conf show-databases-query)
+@(query local-conf show-databases-query)
 ;; {:status 200,
 ;;  :body {:results [{:series [{:name "databases", :columns ["name"], :values [["_internal"]]}]}]}}
 ```
