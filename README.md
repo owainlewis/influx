@@ -2,7 +2,8 @@
 
 An async client for Influx DB. If there's anything I've missed please get in touch.
 Internally this client uses http-kit for async requests. Use the @ operator to block requests. See http-kit for more info.
-Influx has a really simple HTTP API an so this client tries to adhere to that simplicity as much as possible.
+
+InfluxDB has a really simple HTTP API an so this client tries to adhere to that simplicity as much as possible.
 
 ## Usage
 
