@@ -1,6 +1,7 @@
 (ns influx.queries)
 
 (def show-databases-query "SHOW DATABASES")
+
 (def show-users-query "SHOW USERS")
 
 (defn create-database-query [db] 
