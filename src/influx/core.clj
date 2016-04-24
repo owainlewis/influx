@@ -85,5 +85,5 @@
   (comp run-request! db-query-request))
 
 (def query
-  ^{:doc "Runs a simple query against influx"}
+  ^{:doc "Runs a simple query against InfluxDB"}
   (comp run-request! raw-query-request))
