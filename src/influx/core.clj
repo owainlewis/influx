@@ -39,9 +39,6 @@
     (fn [{:keys [status headers body error]}]
      {:status status :body (json/parse-string body true)})))
 
-;; Requests
-;; ******************************************************************
-
 (defn raw-query-request
   "Performs a simple raw query against InfluxDB"
   [conf q]
@@ -66,9 +63,6 @@
     {:query-params {:db db :q query :pretty pretty}}))
   ([conf db query]
     (raw-query-request conf db query false)))
-
-;; Public API
-;; ******************************************************************
 
 (def write-batch
   ^{:doc "Write a batch of data to InfluxDB"}
