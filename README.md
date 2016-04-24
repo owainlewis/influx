@@ -1,5 +1,7 @@
 # Influx
 
+![](https://travis-ci.org/owainlewis/influx.svg)
+
 ![](https://raw.githubusercontent.com/owainlewis/influx/master/logo.png)
 
 An async client for Influx DB. If there's anything I've missed please get in touch.
