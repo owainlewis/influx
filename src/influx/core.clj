@@ -13,8 +13,6 @@
     "cpu_load_short,host=server02,region=us-west value=0.55 1422568543702900257"
     "cpu_load_short,direction=in,host=server01,region=us-west value=2.0 1422568543702900257" ])
 
-;; ******************************************************************
-
 (defn endpoint-from-conf
   "Constructs the full endpoint of the InfluxDB instance"
   [conf path]
