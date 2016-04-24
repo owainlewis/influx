@@ -1,5 +1,7 @@
 # Influx
 
+![](https://raw.githubusercontent.com/owainlewis/influx/master/logo.png)
+
 An async client for Influx DB. If there's anything I've missed please get in touch.
 Internally this client uses http-kit for async requests. Use the @ operator to block requests. See http-kit for more info.
 
