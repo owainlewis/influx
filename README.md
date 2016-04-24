@@ -11,6 +11,8 @@ InfluxDB has a really simple HTTP API an so this client tries to adhere to that 
 
 ## Usage
 
+[![Clojars Project](https://img.shields.io/clojars/v/io.forward/influx.svg)](https://clojars.org/io.forward/influx)
+
 ## Getting Started
 
 ```clojure
