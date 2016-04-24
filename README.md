@@ -1,8 +1,8 @@
 # Influx
 
-An async client for Influx DB.
-
+An async client for Influx DB. If there's anything I've missed please get in touch.
 Internally this client uses http-kit for async requests. Use the @ operator to block requests. See http-kit for more info.
+Influx has a really simple HTTP API an so this client tries to adhere to that simplicity as much as possible.
 
 ## Usage
 
@@ -24,13 +24,15 @@ All requests require configuration which is just a map of information needed to 
   })
 ```
 
-## Basic Queries
+## Queries
+
+Running simple "raw" queries is straightforward.
 
 ```clojure
 @(influx/query local-conf "SHOW DATABASES")
 ```
 
-An example REPL session
+An example REPL session showing the difference between blocking and non blocking requests.
 
 ```clojure
 (query docker-conf show-databases-query)
@@ -58,7 +60,6 @@ Or a batch of data
     "cpu_load_short,direction=in,host=server01,region=us-west value=2.0 1422568543702900257" ])
 
 (influx/write-batch local-conf "mydb" sample-data)
-
 ```
 
 ## License

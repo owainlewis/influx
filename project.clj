@@ -1,4 +1,4 @@
-(defproject io.forward/influx "0.1.0-SNAPSHOT"
+(defproject io.forward/influx "0.1.0"
   :description "Influx DB"
   :url "http://github.com/owainlewis/influx"
   :license {:name "Eclipse Public License"

@@ -1,13 +1,14 @@
 (ns influx.core
   (:require [clojure.string :refer [join]]
+            [influx.queries :refer :all]
             [cheshire.core :as json]
             [org.httpkit.client :as http]))
 
 (defrecord Conf [host port username password])
 
-(def docker-conf (Conf. "http://192.168.99.100" 8086 nil nil))
+(def ^{:private true} docker-conf (Conf. "http://192.168.99.100" 8086 nil nil))
 
-(def sample-data
+(def ^{:private true} sample-data
   [ "cpu_load_short,host=server02 value=0.67"
     "cpu_load_short,host=server02,region=us-west value=0.55 1422568543702900257"
     "cpu_load_short,direction=in,host=server01,region=us-west value=2.0 1422568543702900257" ])
@@ -88,23 +89,3 @@
 (def query
   ^{:doc "Runs a simple query against influx"}
   (comp run-request! raw-query-request))
-
-;; Query Templates
-;; ******************************************************************
-
-(def show-databases-query "SHOW DATABASES")
-
-(defn create-database-query [db] (format "CREATE DATABASE %s" db))
-
-(defn drop-database-query [db] (format "DROP DATABASE %s" db))
-
-(def show-users-query "SHOW USERS")
-
-(defn create-user-query [username password]
-  (format "CREATE USER \"%s\" WITH PASSWORD '%s'" username password))
-
-(defn create-admin-user-query [username password]
-  (format "CREATE USER \"%s\" WITH PASSWORD '%s' WITH ALL PRIVILEGES" username password))
-
-(defn show-retention-policy-query [db]
-  (format "SHOW RETENTION POLICIES ON \"%s\"" db))
