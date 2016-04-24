@@ -41,7 +41,7 @@ An example REPL session showing the difference between blocking and non blocking
 (query docker-conf show-databases-query)
 ;; #promise[{:status :pending, :val nil} 0xa50d47c]
 
-;; @(query docker-conf show-databases-query)
+@(query docker-conf show-databases-query)
 ;; {:status 200,
 ;;  :body {:results [{:series [{:name "databases", :columns ["name"], :values [["_internal"]]}]}]}}
 ```
