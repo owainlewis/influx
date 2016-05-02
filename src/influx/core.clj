@@ -4,9 +4,13 @@
             [cheshire.core :as json]
             [org.httpkit.client :as http]))
 
-(defrecord Conf [host port username password])
+(defrecord Conf [host 
+                 port 
+                 username 
+                 password])
 
-(def ^{:private true} docker-conf (Conf. "http://192.168.99.100" 8086 nil nil))
+(def ^{:private true} docker-conf 
+  (Conf. "http://192.168.99.100" 8086 nil nil))
 
 (def ^{:private true} sample-data
   [ "cpu_load_short,host=server02 value=0.67"
