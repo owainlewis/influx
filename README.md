@@ -55,7 +55,7 @@ An example REPL session showing the difference between blocking and non blocking
 If you want to write a single line of data to influx
 
 ```clojure
-(influx/write local-conf "mydb" "cpu_load_short,host=server02 value=0.67")
+(influx/write-metric local-conf "mydb" "cpu_load_short,host=server02 value=0.67")
 ```
 
 Or a batch of data
@@ -66,7 +66,7 @@ Or a batch of data
     "cpu_load_short,host=server02,region=us-west value=0.55 1422568543702900257"
     "cpu_load_short,direction=in,host=server01,region=us-west value=2.0 1422568543702900257" ])
 
-(influx/write-batch local-conf "mydb" sample-data)
+(influx/write-batch-metrics local-conf "mydb" sample-data)
 ```
 
 ## License

@@ -4,12 +4,9 @@
             [cheshire.core :as json]
             [org.httpkit.client :as http]))
 
-(defrecord Conf [ host 
-                  port 
-                  username 
-                  password ])
+(defrecord Conf [host port username password])
 
-(def ^{:private true} docker-conf 
+(def ^{:private true} docker-conf
   (Conf. "http://192.168.99.100" 8086 nil nil))
 
 (def ^{:private true} sample-data
@@ -50,13 +47,10 @@
     {:query-params {:q q}}))
 
 (defn write-data-request
-  "Post multiple points to multiple series at the same time by separating each point with a new line.
-   Batching points in this manner results in much higher performance."
-  [conf db lines]
-  (when (sequential? lines)
-    (build-request :post conf "/write"
-      {:query-params {:db db}
-       :body (join lines "\n")})))
+  [conf db data]
+  (build-request :post conf "/write"
+     {:query-params {:db db}
+      :body data}))
 
 (defn db-query-request
   "Appending pretty=true to the URL enables pretty-printed JSON output.
@@ -68,15 +62,15 @@
   ([conf db query]
     (raw-query-request conf db query false)))
 
-(def write-batch
+(def write-batch-metrics
   ^{:doc "Write a batch of data to InfluxDB"}
   (comp run-request! write-data-request))
 
-(defn write
+(defn write-metric
   ^{:doc "Write data to InfluxDB"}
-  [conf db line]
+  [conf db data]
   (run-request!
-    (write-data-request conf db [line])))
+    (write-data-request conf db data)))
 
 (def db-query
   ^{:doc "Perform a query against a given database"}
